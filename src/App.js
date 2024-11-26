@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/App.css";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 /*
 import Header from './components/header';
@@ -14,6 +14,7 @@ import DrugsFilterPage from "./DrugsFilter";
 import HomePage from "./HomeDrugs";
 import DrugsAndMedications from "./DrugsAndMedications";
 import HomeDrugs from "./HomeDrugs";
+import AboutUs from "./AboutUs";
 
 /*
 const drugsData = [
@@ -48,6 +49,7 @@ function App() {
           <Route path="/drugs" element={<DrugsAndMedications />} />
           <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
           <Route path="/chat" element={<Form />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </Router>
     </>

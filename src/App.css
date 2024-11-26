@@ -15,7 +15,7 @@ html, body {
   border-bottom: 1px solid #ddd; /* Тонка лінія під хедером */
 }
 
-.container {
+.container{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -192,9 +192,11 @@ html, body {
   gap: 10px; /* Відступ між елементами */
   margin-bottom: 30px; /* Відступ вниз перед копірайтом */
   padding-left: 15px;
+  padding-bottom: 15px;
+  text-align: left;
 }
 
-/* Стиль іконки */
+
 .footer-icon {
   font-size: 24px;
 }

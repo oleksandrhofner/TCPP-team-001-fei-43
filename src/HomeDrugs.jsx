@@ -1,6 +1,7 @@
 import React from "react";
-import "./styles/App.css";
+import "./App.css";
 import "./styles/Scrollable.css";
+import Header from "./components/header";
 import { useNavigate } from "react-router-dom";
 
 import ScrollableIcons from "./scrollable";
@@ -15,27 +16,7 @@ function HomePage() {
     <>
       {/* Header */}
       <div className="page-container">
-        <header className="header">
-          <div className="container">
-            <h1 className="logo">MediAnalytics</h1>
-
-            <nav className="navigation">
-              <a href="/drugs" className="nav-link">
-                Drugs A-Z
-              </a>
-              <a href="#" className="nav-link">
-                ...
-              </a>
-              <a href="#" className="nav-link">
-                Exploration More
-              </a>
-              <a href="/chat" className="nav-link">
-                Communication
-              </a>
-            </nav>
-          </div>
-        </header>
-
+      <Header />
         {/* Search Section */}
 
         <section className="search-section">
