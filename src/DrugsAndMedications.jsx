@@ -103,4 +103,4 @@ function DrugsAndMedications() {
   );
 }
 
-export default DrugsAndMedications;
+export default DrugsAndMedications ;
