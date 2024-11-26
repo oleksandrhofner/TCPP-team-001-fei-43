@@ -1,0 +1,29 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.drugListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drugItem {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.drugItem h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.drugItem p {
+    margin: 5px 0;
+}
