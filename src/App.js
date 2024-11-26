@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 /*
 import Header from './components/header';
@@ -8,22 +8,45 @@ import SearchBlock from "./components/search";
 import Footer from "./components/footer";
 */
 
-//import Page from "./components/testPage"
+import Form from "./form";
 
-import Drugs from "./DrugsAndMedications";
+import DrugsFilterPage from "./DrugsFilter";
 import HomePage from "./HomeDrugs";
 import DrugsAndMedications from "./DrugsAndMedications";
 import HomeDrugs from "./HomeDrugs";
-import Page from "./components/testPage";
-import Form from "./form";
 
+/*
+const drugsData = [
+    "Aspirin",
+    "Ibuprofen",
+    "Paracetamol",
+    "Amoxicillin",
+    "Metformin",
+    "Lisinopril",
+    "Lipitor",
+    "Prednisone",
+    "Atorvastatin",
+    "Levothyroxine",
+    "Omeprazole",
+    "Gabapentin",
+    "Alprazolam",
+    "Fluoxetine",
+    "Clonazepam",
+    "Zoloft",
+    "Citalopram",
+    "Tamsulosin",
+    "Hydrochlorothiazide",
+    "Warfarin",
+];
+*/
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<HomeDrugs />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/drugs" element={<DrugsAndMedications />} />
+          <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
           <Route path="/chat" element={<Form />} />
         </Routes>
       </Router>
