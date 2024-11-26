@@ -150,3 +150,40 @@
 .PopularDrugItemContainer a:visited {
   color: rgb(3, 3, 7);
 }
+.container {
+  padding: 20px;
+}
+
+.PopularDrugItemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.drugButton {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.drugButton:hover {
+  background-color: #0056b3;
+}
+
+.drugInfo {
+  margin-top: 20px;
+}
+
+.drugCard {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}
