@@ -1,0 +1,35 @@
+# Node.js / React.js
+node_modules/       # Каталог з бібліотеками
+.cache/             # Кеш webpack, babel та інших інструментів
+build/              # Зібрані файли
+dist/               # Вихідний каталог для зібраних ресурсів
+
+# Лог-файли
+npm-debug.log*      # Лог npm
+yarn-debug.log*     # Лог Yarn
+yarn-error.log*
+pnpm-debug.log*
+
+# Конфігураційні файли
+*.env               # Змінні середовища
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE і редактори
+.vscode/            # Налаштування VS Code
+.idea/              # Налаштування IntelliJ IDEA
+*.sublime-workspace
+*.sublime-project
+
+# Системні файли
+.DS_Store           # macOS
+Thumbs.db           # Windows
+
+# Файли тестів і покриття
+coverage/           # Покриття тестів
+*.lcov              # Lcov звіти
+
+# Інші тимчасові файли
+public/             # Папка з публічними файлами, які часто перезаписуються
