@@ -35,5 +35,5 @@
 1. **Клонувати репозиторій**:
    ```bash
    git clone https://github.com/ваш_репозиторій/mediAnalytics.git
-   ```
+   ```bash
    cd mediAnalytics
