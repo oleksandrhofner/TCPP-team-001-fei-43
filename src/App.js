@@ -14,6 +14,7 @@ import HomePage from "./HomeDrugs";
 import DrugsAndMedications from "./DrugsAndMedications";
 import SymptomsPage from "./SymptomsChatGPT";
 import AboutUS from "./AboutUs";
+import DrugDetailPage from "./DrugDetailPage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/symptoms" element={<SymptomsPage/>} />
                     <Route path="/chat" element={<Form/>}/>
                     <Route path="/aboutus" element={<AboutUS />} />
+                    <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} />
                 </Routes>
             </Router>
         </>
