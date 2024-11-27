@@ -7,19 +7,19 @@ import DrugsAndMedications from "./DrugsAndMedications";
 import DrugDetailPage from "./DrugDetailPage";  // Новий компонент для деталей препарату
 
 function App() {
-  return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/drugs" element={<DrugsAndMedications />} />
-          <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
-          <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} /> {/* Новий маршрут */}
-          <Route path="/chat" element={<Form />} />
-            <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} />
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/drugs" element={<DrugsAndMedications />} />
+                <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
+                <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} /> {/* Новий маршрут */}
+                <Route path="/chat" element={<Form />} />
+                <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} />
 
-        </Routes>
-      </Router>
-  );
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

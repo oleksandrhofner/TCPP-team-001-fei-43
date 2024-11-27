@@ -76,6 +76,29 @@
   opacity: 1;
 }
 
+/* Стилі для результатів пошуку */
+.searchResults {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchResultItem {
+  color: #000dff; /* Білий текст */
+  padding: 10px 15px;
+  margin-bottom: 10px; /* Відступи між результатами */
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Зміна фону при наведенні */
+.searchResultItem:hover {
+  background-color: #007bff;
+  color: white;
+}
+
 .alphabetContainer {
   display: flex;
   gap: 5px;
@@ -150,40 +173,52 @@
 .PopularDrugItemContainer a:visited {
   color: rgb(3, 3, 7);
 }
-.container {
-  padding: 20px;
+/* Existing styles... */
+
+.searchResults {
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.PopularDrugItemContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.drugButton {
+.searchResultItem {
+  color: #000dff;
   padding: 10px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.searchResultItem:hover {
   background-color: #007bff;
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.drugButton:hover {
-  background-color: #0056b3;
-}
-
-.drugInfo {
-  margin-top: 20px;
-}
-
-.drugCard {
-  padding: 15px;
-  margin-bottom: 10px;
+.drugDetails {
+  margin-top: 40px;
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-.error {
-  color: red;
+.drugDetails h3 {
+  font-size: 24px;
+  color: #333;
 }
+
+.drugDetails p {
+  font-size: 16px;
+  color: #555;
+}
+
+.drugDetails img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+/* Other existing styles... */
