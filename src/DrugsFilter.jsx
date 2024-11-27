@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import style from "./DrugsFilter.module.css";
 
+// Функція для отримання даних з Flask API
 const DrugsFilterPage = () => {
     const { letter } = useParams(); // Отримуємо літеру з URL
-    const [drugs, setDrugs] = useState([]); // Зберігаємо всі препарати для літери
+    const [drugs, setDrugs] = useState([]); // Зберігаємо всі препарати
     const [filteredDrugs, setFilteredDrugs] = useState([]); // Відфільтровані препарати
-    const [searchQuery, setSearchQuery] = useState(""); // Зберігаємо запит для пошуку
     const [error, setError] = useState("");
 
-    // Функція для отримання препаратів для літери
+    // Отримуємо препарати для літери через Flask API
     useEffect(() => {
         const fetchDrugsByLetter = async () => {
             try {
@@ -35,17 +35,18 @@ const DrugsFilterPage = () => {
     }, [letter]);
 
     // Оновлюємо список препаратів на основі пошукового запиту
-    useEffect(() => {
-        if (searchQuery) {
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.trim() === "") {
+            setFilteredDrugs(drugs);
+        } else {
             setFilteredDrugs(
                 drugs.filter((drug) =>
-                    drug.medicine_name.toLowerCase().includes(searchQuery.toLowerCase())
+                    drug.medicine_name.toLowerCase().includes(query)
                 )
             );
-        } else {
-            setFilteredDrugs(drugs);
         }
-    }, [searchQuery, drugs]);
+    };
 
     return (
         <section className={style.container}>
@@ -59,8 +60,7 @@ const DrugsFilterPage = () => {
                     type="text"
                     className={style.searchInput}
                     placeholder="Search for a drug"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleSearch}
                 />
             </div>
 
@@ -83,7 +83,7 @@ const DrugsFilterPage = () => {
                         </div>
                     ))
                 ) : (
-                    <p>No drugs found.</p>
+                    <p>No drugs found for this letter.</p>
                 )}
             </div>
         </section>

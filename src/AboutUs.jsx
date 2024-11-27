@@ -44,6 +44,7 @@ Our primary mission is to develop intuitive tools that empower individuals to ex
             </div>
             <div className="team-photo five">
             </div>
+
           </div>
         </section>
       </div>

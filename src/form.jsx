@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import Header from "./components/header";
 import style from "./form.module.css";
 
 function Form() {
@@ -166,7 +165,6 @@ function Form() {
         </button>
       </form>
     </section>
-    
   );
 }
 
