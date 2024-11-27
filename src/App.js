@@ -15,6 +15,8 @@ function App() {
           <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
           <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} /> {/* Новий маршрут */}
           <Route path="/chat" element={<Form />} />
+            <Route path="/drugs/detail/:medicineName" element={<DrugDetailPage />} />
+
         </Routes>
       </Router>
   );
