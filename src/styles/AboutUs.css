@@ -50,22 +50,22 @@
 }
 
 .one{
-  background-image: url("../photo/Sasha.jpg");
+  background-image: url("../../../Downloads/TCPP-team-001-fei-43-CompletedMergeConflicts/src/photo/Sasha.jpg");
   background-position: center;
 }
 .two{
-  background-image: url("../photo/Dmytro.jpg");
+  background-image: url("../../../Downloads/TCPP-team-001-fei-43-CompletedMergeConflicts/src/photo/Dmytro.jpg");
   background-position: 75% 45%;
 }
 .three{
-  background-image: url("../photo/Vlad.jpg");
+  background-image: url("../../../Downloads/TCPP-team-001-fei-43-CompletedMergeConflicts/src/photo/Vlad.jpg");
   background-position: 35% 25%;
 }
 .four{
-  background-image: url("../photo/Bohdan.jpg");
+  background-image: url("../../../Downloads/TCPP-team-001-fei-43-CompletedMergeConflicts/src/photo/Bohdan.jpg");
   background-position: 35% 45%;
 }
 .five{
-  background-image: url("../photo/Volodymyr.jpg");
+  background-image: url("../../../Downloads/TCPP-team-001-fei-43-CompletedMergeConflicts/src/photo/Volodymyr.jpg");
   background-position: 65% top;
 }
