@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const OpenAI = require('openai');
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 
 // Ініціалізація OpenAI
 const openai = new OpenAI({
-    apiKey: "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", // Замініть на ваш API-ключ
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 app.post('/api/analyze-symptoms', async (req, res) => {
