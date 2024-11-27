@@ -12,8 +12,8 @@ const Header = () => {
           <a href="/drugs" className="nav-link">
             Drugs A-Z
           </a>
-          <a href="#" className="nav-link">
-            ...
+          <a href="/symptoms" className="nav-link">
+            Symptoms
           </a>
           <a href="/chat" target="_blank" className="nav-link">
             Communication

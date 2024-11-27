@@ -15,6 +15,7 @@ import HomePage from "./HomeDrugs";
 import DrugsAndMedications from "./DrugsAndMedications";
 import HomeDrugs from "./HomeDrugs";
 import AboutUs from "./AboutUs";
+import SymptomsChatGPT from "./SymptomsChatGPT";
 
 /*
 const drugsData = [
@@ -50,6 +51,7 @@ function App() {
           <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
           <Route path="/chat" element={<Form />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/symptoms" element={<SymptomsChatGPT/>} />
         </Routes>
       </Router>
     </>
