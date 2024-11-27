@@ -4,56 +4,12 @@ import style from "./DrugsAndMedications.module.css";
 
 import Header from "./components/header";
 
-// Test data for drugs names
+
 export const drugsData = [
-    "Aspirin",
-    "Ibuprofen",
-    "Paracetamol",
-    "Amoxicillin",
-    "Metformin",
-    "Lisinopril",
-    "Lipitor",
-    "Prednisone",
-    "Atorvastatin",
-    "Levothyroxine",
-    "Omeprazole",
-    "Gabapentin",
-    "Alprazolam",
-    "Fluoxetine",
-    "Clonazepam",
-    "Zoloft",
-    "Citalopram",
-    "Tamsulosin",
-    "Hydrochlorothiazide",
-    "Warfarin",
-];
-
-
-const DrugsByCategory = [
-    "Drug Dosage",
 ];
 
 const popularDrugSearches = [
-    "Aspirin",
-    "Ibuprofen",
-    "Paracetamol",
-    "Amoxicillin",
-    "Metformin",
-    "Lisinopril",
-    "Lipitor",
-    "Prednisone",
-    "Atorvastatin",
-    "Levothyroxine",
-    "Omeprazole",
-    "Gabapentin",
-    "Alprazolam",
-    "Fluoxetine",
-    "Clonazepam",
-    "Zoloft",
-    "Citalopram",
-    "Tamsulosin",
-    "Hydrochlorothiazide",
-    "Warfarin",
+
 ];
 
 function DrugsAndMedications() {
@@ -146,25 +102,6 @@ function DrugsAndMedications() {
         }
     };
 
-    const fetchDrugInfo = async (drugName) => {
-        try {
-            setError(""); // Скидання помилки перед запитом
-            const response = await fetch(
-                `http://127.0.0.1:5000/get_drug_info?drug_name=${drugName}`
-            );
-
-            const data = await response.json();
-            console.log("Fetched drug info:", data);
-
-            if (response.ok) {
-                setDrugInfo(data);
-            } else {
-                setError(data.error || "An error occurred.");
-            }
-        } catch (err) {
-            setError("Failed to fetch drug information.");
-        }
-    };
 
     return (
         <div>
@@ -222,15 +159,6 @@ function DrugsAndMedications() {
                             >
                                 {letter.toUpperCase()}
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <div className={style.browseDrugContainer}>
-                    <h3>Browse drugs by category</h3>
-                    <div className={style.browseDrugItemContainer}>
-                        <a>Drug Approvals</a>
-                        {DrugsByCategory.map((item) => (
-                            <a key={item}>{item}</a>
                         ))}
                     </div>
                 </div>
