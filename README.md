@@ -36,7 +36,26 @@
    ```
    git clone https://github.com/ваш_репозиторій/mediAnalytics.git
    ```
-   **Перехід в папку проекту**:
+   Перехід в папку проекту:
    ```
    cd mediAnalytics
+   ```
+
+2. **Запустити фронтенд (React)**:
+   Встановіть залежності:
+   ```
+   npm install
+   ```
+   Запустіть React-додаток:
+   ```
+   npm start
+   ```
+4. **Запустити бекенд (Flask)**:
+   Встановіть залежності Python:
+   ```
+   pip install -r requirements.txt
+   ```
+   Запустіть Flask-сервер:
+   ```
+   flask run
    ```
