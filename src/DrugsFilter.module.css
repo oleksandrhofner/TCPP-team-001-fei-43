@@ -27,3 +27,52 @@
 .drugItem p {
     margin: 5px 0;
 }
+
+/* DrugsFilter.module.css */
+.container {
+    padding: 20px;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.searchContainer {
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.drugListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drugItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.detailsButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.detailsButton:hover {
+    background-color: #0056b3;
+}
