@@ -1,0 +1,71 @@
+.section-text {
+  display: flex; /* Встановлюємо flexbox для основної секції */
+  flex-direction: row; /* Розташовуємо елементи в рядок */
+  justify-content: center; /* Центруємо елементи по горизонталі */
+  align-items: center; /* Центруємо елементи по вертикалі */
+  gap: 40px; /* Відступ між текстом і фотографіями */
+  padding: 20px;
+  flex-wrap: nowrap; /* Запобігаємо переносу на новий рядок */
+}
+
+.text-content {
+  flex: 1; /* Текст займає всю доступну ширину */
+  max-width: 50%; /* Обмежуємо ширину текстової частини */
+  text-align: left; /* Вирівнювання тексту по лівому краю */
+}
+
+.text-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Секція команди */
+.team-photos {
+  display: flex;
+  flex-wrap: wrap; /* Фото розташовуються у вертикальному стовпці */
+  gap: 20px; /* Відступ між фотографіями */
+  flex: 1; /* Фотографії займають рівний простір із текстом */
+  align-items: center; /* Вирівнюємо фотографії по центру */
+}
+
+.team-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 40%; /* Круглі фото */
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  background-size: 103%;
+   background-repeat: no-repeat;
+}
+
+.team-photo:hover {
+  transform: scale(1.1); /* Збільшення при наведенні */
+}
+/*
+.one{
+  background-image: url("../photo/Sasha.jpg");
+  background-position: center;
+}
+.two{
+  background-image: url("../photo/Dmytro.jpg");
+  background-position: 75% 45%;
+}
+.three{
+  background-image: url("../photo/Vlad.jpg");
+  background-position: 35% 25%;
+}
+.four{
+  background-image: url("../photo/Bohdan.jpg");
+  background-position: 35% 45%;
+}
+.five{
+  background-image: url("../photo/Volodymyr.jpg");
+  background-position: 65% top;
+}*/
