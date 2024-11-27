@@ -5,55 +5,11 @@ import style from "./DrugsAndMedications.module.css";
 import Header from "./components/header";
 
 // Test data for drugs names
-export const drugsData = [
-    "Aspirin",
-    "Ibuprofen",
-    "Paracetamol",
-    "Amoxicillin",
-    "Metformin",
-    "Lisinopril",
-    "Lipitor",
-    "Prednisone",
-    "Atorvastatin",
-    "Levothyroxine",
-    "Omeprazole",
-    "Gabapentin",
-    "Alprazolam",
-    "Fluoxetine",
-    "Clonazepam",
-    "Zoloft",
-    "Citalopram",
-    "Tamsulosin",
-    "Hydrochlorothiazide",
-    "Warfarin",
-];
+export const drugsData = [];
 
 
 const DrugsByCategory = [
     "Drug Dosage",
-];
-
-const popularDrugSearches = [
-    "Aspirin",
-    "Ibuprofen",
-    "Paracetamol",
-    "Amoxicillin",
-    "Metformin",
-    "Lisinopril",
-    "Lipitor",
-    "Prednisone",
-    "Atorvastatin",
-    "Levothyroxine",
-    "Omeprazole",
-    "Gabapentin",
-    "Alprazolam",
-    "Fluoxetine",
-    "Clonazepam",
-    "Zoloft",
-    "Citalopram",
-    "Tamsulosin",
-    "Hydrochlorothiazide",
-    "Warfarin",
 ];
 
 function DrugsAndMedications() {
@@ -146,25 +102,7 @@ function DrugsAndMedications() {
         }
     };
 
-    const fetchDrugInfo = async (drugName) => {
-        try {
-            setError(""); // Скидання помилки перед запитом
-            const response = await fetch(
-                `http://127.0.0.1:5000/get_drug_info?drug_name=${drugName}`
-            );
 
-            const data = await response.json();
-            console.log("Fetched drug info:", data);
-
-            if (response.ok) {
-                setDrugInfo(data);
-            } else {
-                setError(data.error || "An error occurred.");
-            }
-        } catch (err) {
-            setError("Failed to fetch drug information.");
-        }
-    };
 
     return (
         <div>
