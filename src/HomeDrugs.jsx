@@ -35,13 +35,22 @@ function HomePage() {
             <div className="page-container">
                 <header className="header">
                     <div className="container">
-                        <h1 className="logo">MediAnalytics</h1>
-
+                        <a href="/" className="logo">
+                            MediAnalytics
+                        </a>
                         <nav className="navigation">
-                            <a href="/drugs" className="nav-link">Drugs A-Z</a>
-                            <a href="#" className="nav-link">...</a>
-                            <a href="#" className="nav-link">Exploration More</a>
-                            <a href="/chat" className="nav-link">Communication</a>
+                            <a href="/drugs" className="nav-link">
+                                Drugs A-Z
+                            </a>
+                            <a href="/symptoms" className="nav-link">
+                                Symptoms
+                            </a>
+                            <a href="/chat" target="_blank" className="nav-link">
+                                Communication
+                            </a>
+                            <a href="/aboutus" className="nav-link">
+                                About us
+                            </a>
                         </nav>
                     </div>
                 </header>
@@ -97,7 +106,7 @@ function HomePage() {
             </div>
 
 
-            {/* Footer */}
+        {/* Footer */}
             <footer className="site-footer">
                 <div className="footer-content">
                     <div className="footer-contact">

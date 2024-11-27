@@ -80,12 +80,12 @@
 .searchResults {
   margin-top: 20px;
   max-width: 600px;
-  margin-left: auto;
+  margin-left: 4px;
   margin-right: auto;
 }
 
 .searchResultItem {
-  color: #000dff; /* Білий текст */
+  color: #007bff; /* Білий текст */
   padding: 10px 15px;
   margin-bottom: 10px; /* Відступи між результатами */
   cursor: pointer;
@@ -95,8 +95,8 @@
 
 /* Зміна фону при наведенні */
 .searchResultItem:hover {
-  background-color: #007bff;
   color: white;
+  background-color: #007bff; /* Темно-синій фон при наведенні */
 }
 
 .alphabetContainer {
@@ -172,4 +172,32 @@
 
 .PopularDrugItemContainer a:visited {
   color: rgb(3, 3, 7);
+}
+
+.drugButton {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.drugButton:hover {
+  background-color: #0056b3;
+}
+
+.drugInfo {
+  margin-top: 20px;
+}
+
+.drugCard {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
 }

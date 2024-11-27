@@ -9,49 +9,28 @@ import Footer from "./components/footer";
 */
 
 import Form from './form';
-
 import DrugsFilterPage from './DrugsFilter';
 import HomePage from "./HomeDrugs";
 import DrugsAndMedications from "./DrugsAndMedications";
-import HomeDrugs from "./HomeDrugs";
+import SymptomsPage from "./SymptomsChatGPT";
+import AboutUS from "./AboutUs";
 
-/*
-const drugsData = [
-    "Aspirin",
-    "Ibuprofen",
-    "Paracetamol",
-    "Amoxicillin",
-    "Metformin",
-    "Lisinopril",
-    "Lipitor",
-    "Prednisone",
-    "Atorvastatin",
-    "Levothyroxine",
-    "Omeprazole",
-    "Gabapentin",
-    "Alprazolam",
-    "Fluoxetine",
-    "Clonazepam",
-    "Zoloft",
-    "Citalopram",
-    "Tamsulosin",
-    "Hydrochlorothiazide",
-    "Warfarin",
-];
-*/
+
 function App() {
-  return (
-    <>
-        <Router>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/drugs" element={<DrugsAndMedications />} />
-                <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
-                <Route path="/chat" element={<Form/>}/>
-            </Routes>
-    </Router>
-    </>
-  );
+    return (
+        <>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/drugs" element={<DrugsAndMedications />} />
+                    <Route path="/drugs/:letter" element={<DrugsFilterPage />} />
+                    <Route path="/symptoms" element={<SymptomsPage/>} />
+                    <Route path="/chat" element={<Form/>}/>
+                    <Route path="/aboutus" element={<AboutUS />} />
+                </Routes>
+            </Router>
+        </>
+    );
 }
 
 export default App;

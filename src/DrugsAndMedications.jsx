@@ -31,13 +31,6 @@ export const drugsData = [
 
 const DrugsByCategory = [
     "Drug Dosage",
-    "Generic Drug Status",
-    "UK Drug Database",
-    "US Database",
-    "Drug Dosage",
-    "Generic Drug Status",
-    "UK Drug Database",
-    "US Database",
 ];
 
 const popularDrugSearches = [
@@ -77,11 +70,13 @@ function DrugsAndMedications() {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
+    const [drugInfo, setDrugInfo] = useState(null);
+    const [error, setError] = useState("");
+
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
 
-        // Якщо рядок пошуку пустий, не відображаємо результати
         if (query.trim() === "") {
             setSearchResults([]);
         } else {
@@ -89,6 +84,26 @@ function DrugsAndMedications() {
             setSearchResults(
                 drugsData.filter((drug) => drug.toLowerCase().includes(query))
             );
+        }
+    };
+
+    const fetchDrugInfo = async (drugName) => {
+        try {
+            setError(""); // Скидання помилки перед запитом
+            const response = await fetch(
+                `http://127.0.0.1:5000/get_drug_info?drug_name=${drugName}`
+            );
+
+            const data = await response.json();
+            console.log("Fetched drug info:", data);
+
+            if (response.ok) {
+                setDrugInfo(data);
+            } else {
+                setError(data.error || "An error occurred.");
+            }
+        } catch (err) {
+            setError("Failed to fetch drug information.");
         }
     };
 
@@ -150,6 +165,7 @@ function DrugsAndMedications() {
                 <div className={style.browseDrugContainer}>
                     <h3>Browse drugs by category</h3>
                     <div className={style.browseDrugItemContainer}>
+                        <a>Drug Approvals</a>
                         {DrugsByCategory.map((item) => (
                             <a key={item}>{item}</a>
                         ))}
@@ -159,10 +175,62 @@ function DrugsAndMedications() {
                     <h3>Popular drug searches</h3>
                     <div className={style.PopularDrugItemContainer}>
                         {popularDrugSearches.map((item) => (
-                            <a key={item}>{item}</a>
+                            <button
+                                key={item}
+                                onClick={() => fetchDrugInfo(item)}
+                                className={style.drugButton}
+                            >
+                                {item}
+                            </button>
                         ))}
                     </div>
                 </div>
+
+                {error && <p className={style.error}>{error}</p>}
+
+                {drugInfo && (
+                    <div className={style.drugInfo}>
+                        <h3>Drug Information</h3>
+                        <div className={style.drugCard}>
+                            {drugInfo.length > 0 ? (
+                                drugInfo.map((info, index) => (
+                                    <div key={index}>
+                                        <p>
+                                            <strong>{info.medicine_name}</strong>
+                                        </p>
+                                        <p>
+                                            <strong>Composition:</strong> {info.composition}
+                                        </p>
+                                        <p>
+                                            <strong>Uses:</strong> {info.uses}
+                                        </p>
+                                        <p>
+                                            <strong>Side Effects:</strong> {info.side_effects}
+                                        </p>
+                                        <img src={info.image_url} alt={info.medicine_name}/>
+                                        <p>
+                                            <strong>Manufacturer:</strong> {info.manufacturer}
+                                        </p>
+                                        <p>
+                                            <strong>Excellent Review %:</strong>{" "}
+                                            {info.excellent_review_percent}%
+                                        </p>
+                                        <p>
+                                            <strong>Average Review %:</strong>{" "}
+                                            {info.average_review_percent}%
+                                        </p>
+                                        <p>
+                                            <strong>Poor Review %:</strong> {info.poor_review_percent}
+                                            %
+                                        </p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No information available for this drug.</p>
+                            )}
+                        </div>
+                    </div>
+                )}
             </section>
         </div>
     );

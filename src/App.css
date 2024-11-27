@@ -109,31 +109,27 @@ html, body {
 }
 
 .search-results {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
-  flex-wrap: wrap; /* Якщо багато результатів, вони переносяться */
-  gap: 10px;
-  padding: 5px 0;
+  flex-wrap: wrap; /* Перенесення при переповненні */
+  justify-content: center; /* Горизонтальне центрування */
+  gap: 15px; /* Проміжок між елементами */
+  padding: 10px 0;
   border-top: 1px solid #ddd; /* Легка лінія для розділення */
 }
 
 /* Окремий елемент результату */
-.search-result-item{
-  background-color: #f8f9fa; /* Світло-сірий фон */
-  padding: 5px 10px;
+.search-result-item {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px;
   color: #444444;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  text-align: center; /* Центрування тексту всередині елемента */
 }
 
-
-
-.search-result-item-drugs:hover {
-  background-color: #007bff;
-  color: #fff;
-}
 
 /* Секція "Your Health Companion" */
 .companion-section {

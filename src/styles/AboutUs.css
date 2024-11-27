@@ -48,7 +48,7 @@
 .team-photo:hover {
   transform: scale(1.1); /* Збільшення при наведенні */
 }
-/*
+
 .one{
   background-image: url("../photo/Sasha.jpg");
   background-position: center;
@@ -68,4 +68,4 @@
 .five{
   background-image: url("../photo/Volodymyr.jpg");
   background-position: 65% top;
-}*/
+}
