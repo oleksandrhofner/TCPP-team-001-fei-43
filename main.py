@@ -10,7 +10,6 @@ CORS(app)
 medicine_details_df = pd.read_csv('D:/University/GitHub/archive/Medicine_Details.csv')
 
 def format_drug_info(row):
-    """Формує словник з інформацією про медикамент."""
     return {
         'medicine_name': row['Medicine Name'],
         'composition': row['Composition'],
@@ -78,6 +77,14 @@ def convert_to_serializable(value):
         return value.tolist()  # Convert pandas Series to list
     else:
         return str(value)  # Fallback to string conversion for other types
+
+
+@app.route('/get_popular_drugs', methods=['GET'])
+def get_popular_drugs():
+    # Select the top drugs based on Excellent Review % or any other criteria
+    top_drugs = medicine_details_df.nlargest(10, 'Excellent Review %')  # Or use any other logic to select popular drugs
+    popular_drugs = top_drugs['Medicine Name'].tolist()
+    return jsonify(popular_drugs)
 
 
 if __name__ == '__main__':
