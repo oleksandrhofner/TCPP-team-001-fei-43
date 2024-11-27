@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-# Load your Medicine_Details dataset
+# Завантажуємо ваш dataset
 medicine_details_df = pd.read_csv('D:/University/GitHub/archive/Medicine_Details.csv')
 
 def format_drug_info(row):
@@ -24,23 +24,19 @@ def format_drug_info(row):
 
 @app.route('/get_drug_info', methods=['GET'])
 def get_drug_info():
-    drug_letter = request.args.get('drug_name')  # Отримуємо першу літеру
-    if not drug_letter or len(drug_letter) != 1:  # Перевіряємо, чи це одна літера
-        return jsonify({"error": "A single letter is required"}), 400
+    drug_name = request.args.get('drug_name')
+    if not drug_name:
+        return jsonify({"error": "Drug name is required"}), 400
 
-    # Фільтрація за першою літерою
+    # Перевірка, чи починається назва препарату з літери drug_name
     drug_info = medicine_details_df[
-        medicine_details_df['Medicine Name']
-        .str.lower()
-        .str.startswith(drug_letter.lower())
-    ]
+        medicine_details_df['Medicine Name'].str.lower().str.startswith(drug_name.lower(), na=False)]
 
     if not drug_info.empty:
         output = [format_drug_info(row) for _, row in drug_info.iterrows()]
         return jsonify(output)
     else:
-        return jsonify({"error": "No results found for the given letter"}), 404
-
+        return jsonify({"error": "No results found for the given drug name"}), 404
 
 @app.route('/get_all_drugs', methods=['GET'])
 def get_all_drugs():
