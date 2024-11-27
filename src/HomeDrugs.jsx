@@ -106,7 +106,7 @@ function HomePage() {
             </div>
 
 
-            {/* Footer */}
+        {/* Footer */}
             <footer className="site-footer">
                 <div className="footer-content">
                     <div className="footer-contact">
