@@ -4,12 +4,12 @@ const SearchBlock = () => {
     return (
         <section className="search-section">
             <div className="search-container">
-                <h2 className="search-title">Find Drugs & Conditions</h2>
+                <h2 className="search-title">Symptoms</h2>
                 <div className="search-bar">
                     <input
                         type="text"
                         className="search-input"
-                        placeholder="Enter a drug name, pill imprint, etc."
+                        placeholder="Write your symptoms, for ex. a headache ..."
                     />
                     <button className="search-button">
                         <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search"
@@ -21,4 +21,4 @@ const SearchBlock = () => {
     );
 };
 
-export default  SearchBlock ;
+export default SearchBlock;

@@ -1,106 +1,118 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./DrugsAndMedications.module.css";
+
 import Header from "./components/header";
 
-export const drugsData = [
-  { name: "Aspirin" },
-  { name: "Ibuprofen" },
-  { name: "Amoxicillin" },
-  { name: "Atorvastatin" },
-  { name: "Zoloft" },
-  { name: "Paracetamol" },
-  { name: "Gabapentin" },
-  { name: "Lipitor" },
-  { name: "Prednisone" },
-  { name: "Metformin" },
-];
+// Test data for drugs names
+export const drugsData = [];
 
-const DrugsByCategory = [
-  "Drug Dosage",
-  "Generic Drug Status",
-  "UK Drug Database",
-  "US Database",
-  "Drug Dosage",
-  "Generic Drug Status",
-  "UK Drug Database",
-  "US Database",
-  "Drug Dosage",
-  "Generic Drug Status",
-  "UK Drug Database",
-  "US Database",
-  "Drug Dosage",
-  "Generic Drug Status",
-  "UK Drug Database",
-  "US Database",
-];
-
-const popularDrugSearches = [
-  "Almox",
-  "Nevanac",
-  "Allercet",
-  "Metformin",
-  "Lipirose",
-  "Metpure",
-  "Nadoxin",
-  "Benadryl",
-  "Olmin",
-  "GeneVac",
-  "Adaferin",
-  "Telplus",
-  "Torvel",
-  "Zocef",
-  "Olox",
-  "Solvin",
-  "Euglim",
-  "Renogard",
-];
+const DrugsByCategory = ["Drug Dosage"];
 
 function DrugsAndMedications() {
-  const [drugInfo, setDrugInfo] = useState(null);
-  const [error, setError] = useState("");
+  const alphabet = Array.from(
+    { length: 26 },
+    (_, i) => String.fromCharCode(97 + i) // Літери a-z
+  );
   const navigate = useNavigate();
 
-  const fetchDrugInfo = async (drugName) => {
-    try {
-      setError(""); // Скидання помилки перед запитом
-      const response = await fetch(
-        `http://127.0.0.1:5000/get_drug_info?drug_name=${drugName}`
-      );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedDrug, setSelectedDrug] = useState(null);
+  const [popularDrugSearches, setPopularDrugSearches] = useState([]);
 
-      const data = await response.json();
-      console.log("Fetched drug info:", data);
+  //const [drugInfo, setDrugInfo] = useState(null);
+  const [error, setError] = useState("");
 
-      if (response.ok) {
-        setDrugInfo(data);
-      } else {
-        setError(data.error || "An error occurred.");
+  // Fetch all drugs from Flask API
+  useEffect(() => {
+    const fetchAllDrugs = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/get_all_drugs");
+        const data = await response.json();
+        if (response.ok) {
+          drugsData.push(...data); // Populate drugsData
+        } else {
+          setError(data.error || "Failed to load drugs data.");
+        }
+      } catch (err) {
+        setError("An error occurred while loading drugs data.");
       }
-    } catch (err) {
-      setError("Failed to fetch drug information.");
+    };
+    fetchAllDrugs();
+  }, []);
+
+  // Fetch popular drugs from Flask API
+  useEffect(() => {
+    const fetchPopularDrugs = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:5000/get_popular_drugs");
+        const data = await response.json();
+        if (response.ok) {
+          setPopularDrugSearches(data); // Set popular drugs
+        } else {
+          setError(data.error || "Failed to load popular drugs.");
+        }
+      } catch (err) {
+        setError("An error occurred while fetching popular drugs.");
+      }
+    };
+    fetchPopularDrugs();
+  }, []);
+
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    if (query.trim() === "") {
+      setSearchResults([]);
+    } else {
+      // Фільтрація результатів
+      setSearchResults(
+        drugsData.filter((drug) =>
+          drug.medicine_name.toLowerCase().includes(query)
+        )
+      );
     }
   };
 
-  const alphabet = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(97 + i)
-  );
-
+  // Handle letter navigation (A-Z)
   const handleLetterClick = (letter) => {
     navigate(`/drugs/${letter.toLowerCase()}`);
   };
 
+  // Handle drug selection and fetch details from Flask API
+  const handleDrugClick = async (medicineName) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:5000/get_drug_details?drug_name=${medicineName}`
+      );
+      const data = await response.json();
+      if (response.ok) {
+        setSelectedDrug(data);
+      } else {
+        setError(data.error || "Failed to fetch drug details");
+      }
+    } catch (err) {
+      setError("An error occurred while fetching drug details.");
+    }
+  };
+
   return (
     <div>
+      {/* Додавання Header зверху */}
       <Header />
+
+      {/* Основний контент сторінки */}
       <section className={style.container}>
         <h2 className={style.h2DrugsText}>Drugs & Medications A to Z</h2>
         <p className={style.text}>
           Detailed and accurate information for both consumers and
           <span className={style.healthcare_professionals}>
+            {" "}
             healthcare professionals
           </span>
         </p>
-
         <div className={style.searchContainer}>
           <h3 className={style.searchTitle}>Search</h3>
           <div className={style.search_bar}>
@@ -108,7 +120,8 @@ function DrugsAndMedications() {
               type="text"
               className={style.search_input}
               placeholder="Enter a drug name"
-              onChange={(e) => fetchDrugInfo(e.target.value)}
+              value={searchQuery}
+              onChange={handleSearch}
             />
             <button className={style.search_button}>
               <img
@@ -118,8 +131,21 @@ function DrugsAndMedications() {
               />
             </button>
           </div>
+          {/* Мінімалістична стрічка пошукових результатів */}
+          {searchResults.length > 0 && (
+            <div className={style.searchResults}>
+              {searchResults.map((result, index) => (
+                <span
+                  key={index}
+                  className={style.searchResultItem}
+                  onClick={() => handleDrugClick(result.medicine_name)} // Функція перенесена в коректний контекст
+                >
+                  {result.medicine_name}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
-
         <div className={style.searchContainer}>
           <h3 className={style.searchTitle}>Browse A-Z</h3>
           <div className={style.alphabetContainer}>
@@ -127,17 +153,17 @@ function DrugsAndMedications() {
               <div
                 key={index}
                 className={style.alphabet}
-                onClick={() => handleLetterClick(letter)}
+                onClick={() => handleLetterClick(letter)} // Перехід при натисканні
               >
                 {letter.toUpperCase()}
               </div>
             ))}
           </div>
         </div>
-
         <div className={style.browseDrugContainer}>
           <h3>Browse drugs by category</h3>
           <div className={style.browseDrugItemContainer}>
+            <a>Drug Approvals</a>
             {DrugsByCategory.map((item) => (
               <a key={item}>{item}</a>
             ))}
@@ -150,7 +176,7 @@ function DrugsAndMedications() {
             {popularDrugSearches.map((item) => (
               <button
                 key={item}
-                onClick={() => fetchDrugInfo(item)}
+                onClick={() => handleDrugClick(item)}
                 className={style.drugButton}
               >
                 {item}
@@ -161,49 +187,41 @@ function DrugsAndMedications() {
 
         {error && <p className={style.error}>{error}</p>}
 
-        {drugInfo && (
-          <div className={style.drugInfo}>
-            <h3>Drug Information</h3>
-            <div className={style.drugCard}>
-              {drugInfo.length > 0 ? (
-                drugInfo.map((info, index) => (
-                  <div key={index}>
-                    <p>
-                      <strong>{info.medicine_name}</strong>
-                    </p>
-                    <p>
-                      <strong>Composition:</strong> {info.composition}
-                    </p>
-                    <p>
-                      <strong>Uses:</strong> {info.uses}
-                    </p>
-                    <p>
-                      <strong>Side Effects:</strong> {info.side_effects}
-                    </p>
-                    <img src={info.image_url} alt={info.medicine_name} />
-                    <p>
-                      <strong>Manufacturer:</strong> {info.manufacturer}
-                    </p>
-                    <p>
-                      <strong>Excellent Review %:</strong>{" "}
-                      {info.excellent_review_percent}%
-                    </p>
-                    <p>
-                      <strong>Average Review %:</strong>{" "}
-                      {info.average_review_percent}%
-                    </p>
-                    <p>
-                      <strong>Poor Review %:</strong> {info.poor_review_percent}
-                      %
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p>No information available for this drug.</p>
-              )}
-            </div>
+        {selectedDrug && (
+          <div className={style.drugDetails}>
+            <h3>{selectedDrug.medicine_name}</h3>
+            <p>
+              <strong>Composition:</strong> {selectedDrug.composition}
+            </p>
+            <p>
+              <strong>Uses:</strong> {selectedDrug.uses}
+            </p>
+            <p>
+              <strong>Side Effects:</strong> {selectedDrug.side_effects}
+            </p>
+            <p>
+              <strong>Manufacturer:</strong> {selectedDrug.manufacturer}
+            </p>
+            <p>
+              <strong>Excellent Review %:</strong>{" "}
+              {selectedDrug.excellent_review_percent}
+            </p>
+            <p>
+              <strong>Average Review %:</strong>{" "}
+              {selectedDrug.average_review_percent}
+            </p>
+            <p>
+              <strong>Poor Review %:</strong> {selectedDrug.poor_review_percent}
+            </p>
+            <img
+              src={selectedDrug.image_url}
+              alt={selectedDrug.medicine_name}
+            />
           </div>
         )}
+
+        {/* Display error if any */}
+        {error && <p className={style.error}>{error}</p>}
       </section>
     </div>
   );

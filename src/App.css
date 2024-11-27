@@ -108,6 +108,29 @@ html, body {
   opacity: 1; /* Підвищення контрасту іконки при наведенні */
 }
 
+.search-results {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Перенесення при переповненні */
+  justify-content: center; /* Горизонтальне центрування */
+  gap: 15px; /* Проміжок між елементами */
+  padding: 10px 0;
+  border-top: 1px solid #ddd; /* Легка лінія для розділення */
+}
+
+/* Окремий елемент результату */
+.search-result-item {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #444444;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center; /* Центрування тексту всередині елемента */
+}
+
+
 /* Секція "Your Health Companion" */
 .companion-section {
   background-color: #333; /* Темно-сірий фон */
@@ -192,9 +215,11 @@ html, body {
   gap: 10px; /* Відступ між елементами */
   margin-bottom: 30px; /* Відступ вниз перед копірайтом */
   padding-left: 15px;
+  padding-bottom: 15px;
+  text-align: left;
 }
 
-/* Стиль іконки */
+
 .footer-icon {
   font-size: 24px;
 }
