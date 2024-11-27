@@ -14,11 +14,12 @@ function SymptomsChatGPT() {
             alert("Please enter symptoms!");
             return;
         }
-
+    
         setLoading(true);
         setResponseHtml(""); // Clear previous response
-
+    
         try {
+            // Оновлена адреса сервера (на Flask)
             const apiResponse = await fetch('http://localhost:5000/api/analyze-symptoms', {
                 method: 'POST',
                 headers: {
@@ -26,13 +27,13 @@ function SymptomsChatGPT() {
                 },
                 body: JSON.stringify({ symptoms }),
             });
-
+    
             if (!apiResponse.ok) {
                 throw new Error('Failed to fetch response from server');
             }
-
+    
             const data = await apiResponse.json();
-            setResponseHtml(data.html); // Server returns HTML-formatted response
+            setResponseHtml(data.html); // Flask сервер повертає HTML
         } catch (error) {
             console.error('Error:', error);
             setResponseHtml("<p>An error occurred. Please try again later.</p>");
@@ -40,6 +41,7 @@ function SymptomsChatGPT() {
             setLoading(false);
         }
     };
+    
 
     return (
         <div className="page-container">
@@ -81,7 +83,6 @@ function SymptomsChatGPT() {
                     ) : null}
                 </section>
             </div>
-            <Footer />
         </div>
     );
 }
