@@ -90,6 +90,9 @@ const DrugsFilterPage = () => {
           <option value={5}>5</option>
         </select>
       </div>
+      <div className={style.resultsCount}>
+        <p>{filteredDrugs.length} results found</p>
+      </div>
       {/* Список відфільтрованих препаратів */}
       <div
         className={style.drugListContainer}
