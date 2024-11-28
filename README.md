@@ -34,11 +34,11 @@
 
 1. **Клонувати репозиторій**:
    ```
-   git clone https://github.com/ваш_репозиторій/mediAnalytics.git
+   git clone https://github.com/oleksandrhofner/TCPP-team-001-fei-43.git
    ```
    Перехід в папку проекту:
    ```
-   cd mediAnalytics
+   cd TCPP-team-001-fei-43
    ```
 
 2. **Запустити фронтенд (React)**:
