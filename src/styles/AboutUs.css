@@ -42,30 +42,30 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
   background-size: 103%;
-   background-repeat: no-repeat;
+  background-repeat: no-repeat;
 }
 
 .team-photo:hover {
   transform: scale(1.1); /* Збільшення при наведенні */
 }
 
-.one{
+.one {
   background-image: url("../photo/Sasha.jpg");
   background-position: center;
 }
-.two{
+.two {
   background-image: url("../photo/Dmytro.jpg");
   background-position: 75% 45%;
 }
-.three{
+.three {
   background-image: url("../photo/Vlad.jpg");
   background-position: 35% 25%;
 }
-.four{
+.four {
   background-image: url("../photo/Bohdan.jpg");
   background-position: 35% 45%;
 }
-.five{
+.five {
   background-image: url("../photo/Volodymyr.jpg");
   background-position: 65% top;
 }

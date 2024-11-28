@@ -252,3 +252,41 @@ html, body {
   text-align: center; /* Ідеально по центру */
   color: #757575;
 }
+
+/* Дисклеймер */
+.disclaimer-wrapper {
+  background-color: transparent; /* Прибираємо білий фон */
+  padding: 0; /* Прибираємо зайві відступи */
+  margin: 0; /* Прибираємо зайві відступи */
+}
+
+.disclaimer-centered {
+  background-color: #f5f5f5; /* Світло-сірий фон */
+  border-left: 5px solid #333; /* Чорна смуга зліва */
+  padding: 15px 20px; /* Відступи навколо контенту */
+  max-width: 800px; /* Максимальна ширина */
+  margin: 20px auto; /* Центруємо по горизонталі, додаємо вертикальний відступ */
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.disclaimer-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555; /* Темно-сірий для тексту */
+  margin-bottom: 12px;
+}
+
+.disclaimer-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333; /* Темно-сірий для читабельності */
+}
+
+
+/* Для футера, якщо треба корегувати висоту */
+.footer {
+  height: 100px; /* Висота футера для врахування */
+  background-color: #333;
+}

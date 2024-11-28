@@ -80,7 +80,7 @@ function HomePage() {
                         {searchResults.length > 0 && (
                             <div className="search-results">
                                 {searchResults.map((drug, index) => (
-                                    <span key={index} className="search-result-item-home">
+                                    <span key={index} className="search-result-item">
                 {drug}
               </span>
                                 ))}
@@ -105,8 +105,18 @@ function HomePage() {
                 </section>
             </div>
 
+            <div className="disclaimer-wrapper">
+                <div className="disclaimer-centered">
+                    <p className="disclaimer-title">Disclaimer</p>
+                    <p className="disclaimer-text">
+                        Every effort has been made to ensure that the information provided is accurate, up-to-date and complete, but no guarantee is made to that effect. In addition, the drug information contained herein may be time sensitive and should not be utilized as a reference resource beyond the date hereof. This material does not endorse drugs, diagnose patients, or recommend therapy. This information is a reference resource designed as a supplement to, and not a substitute for, the expertise, skill, knowledge, and judgement of healthcare practitioners in patient care. The absence of a warning for a given drug or combination thereof in no way should be construed to indicate safety, effectiveness, or appropriateness for any given patient.
+                        We does not assume any responsibility for any aspect of healthcare administered with the aid of materials provided. The information contained herein is not intended to cover all possible uses, directions, precautions, warnings, drug interactions, allergic reactions, or adverse effects. If you have questions about the substances you are taking, check with your doctor, nurse, or pharmacist.
+                        Statistical data in medical articles offer general trends, not individual advice. Individual factors can vary significantly, so always seek personalized medical quidance for vour specific healthcare choices.
+                    </p>
+                </div>
+            </div>
 
-        {/* Footer */}
+            {/* Footer */}
             <footer className="site-footer">
                 <div className="footer-content">
                     <div className="footer-contact">
