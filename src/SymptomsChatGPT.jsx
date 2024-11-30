@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./styles/App.module.css";
-
 import Header from "./components/header";
 import Footer from "./components/footer";
 
@@ -14,10 +13,10 @@ function SymptomsChatGPT() {
             alert("Please enter symptoms!");
             return;
         }
-    
+
         setLoading(true);
         setResponseHtml(""); // Clear previous response
-    
+
         try {
             // Оновлена адреса сервера (на Flask)
             const apiResponse = await fetch('http://localhost:5000/api/analyze-symptoms', {
@@ -27,11 +26,11 @@ function SymptomsChatGPT() {
                 },
                 body: JSON.stringify({ symptoms }),
             });
-    
+
             if (!apiResponse.ok) {
                 throw new Error('Failed to fetch response from server');
             }
-    
+
             const data = await apiResponse.json();
             setResponseHtml(data.html); // Flask сервер повертає HTML
         } catch (error) {
@@ -41,7 +40,6 @@ function SymptomsChatGPT() {
             setLoading(false);
         }
     };
-    
 
     return (
         <div className="page-container">
@@ -74,7 +72,7 @@ function SymptomsChatGPT() {
                 </section>
                 <section className="response-section">
                     {loading ? (
-                        <p>Loading...</p>
+                        <p className="loading">Loading...</p>
                     ) : responseHtml ? (
                         <div
                             className="response-container"

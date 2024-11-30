@@ -10,12 +10,16 @@
 .h2DrugsText {
   font-size: 32px;
   color: rgb(51, 51, 51);
+
+  font-family: 'Martel', serif;
 }
 
 .text {
   margin-top: 4px;
   font-size: 18px;
   color: rgb(51, 51, 51);
+
+  font-family: 'Lato', sans-serif;
 }
 
 .healthcare_professionals {
@@ -33,6 +37,8 @@
   font-size: 30px;
   color: rgb(51, 51, 51);
   letter-spacing: 0em;
+
+  font-family: 'Martel', serif;
 }
 
 .search_bar {
